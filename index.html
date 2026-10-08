@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V-Track | VIT Vellore Campus Shuttle Tracking</title>
+  <meta name="description" content="V-Track: live campus shuttle tracking and ETA navigation for VIT Vellore." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <a href="#top" class="logo">V<span>-Track</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">&#9776;</button>
+    <nav id="navLinks">
+      <a href="#problem">Problem</a>
+      <a href="#features">Features</a>
+      <a href="#demo">Live Demo</a>
+      <a href="#how">How It Works</a>
+      <a href="#stops">Stops &amp; Routes</a>
+      <a href="#plan">Plan</a>
+      <a href="#team">Team</a>
+      <a href="track.html" class="nav-cta">Track Live</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <p class="eyebrow">Campus Mobility System</p>
+    <h1>Know exactly when your<br /><span class="grad">shuttle</span> arrives.</h1>
+    <p class="lead">
+      V-Track is a real-time solution to track campus shuttles, view exact routes and stops,
+      and check arrival times at your nearest stop inside VIT Vellore.
+    </p>
+    <div class="cta">
+      <a href="track.html" class="btn primary">Track a shuttle live</a>
+      <a href="#features" class="btn ghost">Explore features</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>372 Acres</strong><span>Full campus coverage</span></div>
+      <div class="stat"><strong>Live ETA</strong><span>Arrival time in minutes</span></div>
+      <div class="stat"><strong>Motion Status</strong><span>Moving vs Stopped</span></div>
+      <div class="stat"><strong>Nearest Stop</strong><span>Auto-detected by location</span></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="section" id="problem">
+    <h2>The Problem: Commuting Across VIT Vellore</h2>
+    <p class="sub">With a 372-acre campus and 10-minute class breaks, shuttle transit has major pain points.</p>
+    <div class="grid three">
+      <article class="card reveal">
+        <div class="icon">&#9201;</div>
+        <h3>Unpredictable Wait Times</h3>
+        <p>Students wait at stops without knowing if the shuttle just left or is stuck at a junction. Long delays lead to missed classes.</p>
+        <span class="tag warn">Average 15-20 min wasted</span>
+      </article>
+      <article class="card reveal">
+        <div class="icon">&#128205;</div>
+        <h3>Unknown Stops &amp; Routes</h3>
+        <p>Multiple shuttle loops run at once (Hostels to SJT, TT to Main Gate). Without route visibility, students board the wrong shuttle.</p>
+        <span class="tag warn">Confusion over destinations</span>
+      </article>
+      <article class="card reveal">
+        <div class="icon">&#128678;</div>
+        <h3>No Moving / Stopped Status</h3>
+        <p>Static schedules fail during rush hours. Students cannot tell if a shuttle is active on the road or stationary at a depot.</p>
+        <span class="tag warn">No live visibility</span>
+      </article>
+    </div>
+    <p class="note">Campus context: walking from Men's Hostel Block-Q or the Ladies' Hostel to Silver Jubilee Tower (SJT) takes nearly 18 minutes.</p>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section alt" id="features">
+    <h2>Our Solution: 4 Core Features</h2>
+    <p class="sub">A simple, easy-to-use mobile system designed for students and staff.</p>
+    <div class="grid four">
+      <article class="card feature reveal">
+        <span class="num">1</span>
+        <h3>Live Campus Map</h3>
+        <p>Real-time moving shuttle icons on the VIT Vellore campus road network.</p>
+        <span class="tag">GPS updated every 3 seconds</span>
+      </article>
+      <article class="card feature reveal">
+        <span class="num">2</span>
+        <h3>Nearest Stop &amp; Live ETA</h3>
+        <p>Locates your position, finds your closest stop and shows the exact arrival minutes.</p>
+        <span class="tag">Dynamic minute countdown</span>
+      </article>
+      <article class="card feature reveal">
+        <span class="num">3</span>
+        <h3>Moving vs. Stopped</h3>
+        <p>See whether the shuttle is moving on the road or halted at a stop picking up students.</p>
+        <span class="tag">Speed &amp; halt tracking</span>
+      </article>
+      <article class="card feature reveal">
+        <span class="num">4</span>
+        <h3>Route &amp; Stop Sequence</h3>
+        <p>A clear route line showing passed and upcoming stops, so you always know where it goes.</p>
+        <span class="tag">Full journey transparency</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section class="section" id="demo">
+    <h2>What the Student Sees</h2>
+    <p class="sub">An interactive preview of the V-Track screen. The shuttle below is simulated for demonstration.</p>
+
+    <div class="phone-wrap">
+      <div class="demo reveal">
+        <div class="demo-top">
+          <div>
+            <small>Nearest stop</small>
+            <strong>Silver Jubilee Tower (SJT)</strong>
+          </div>
+          <span class="pill">120 m away</span>
+        </div>
+
+        <svg id="map" viewBox="0 0 700 360" role="img" aria-label="Simulated campus route map">
+          <defs>
+            <linearGradient id="routeGrad" x1="0" x2="1">
+              <stop offset="0" stop-color="#38bdf8" />
+              <stop offset="1" stop-color="#a78bfa" />
+            </linearGradient>
+          </defs>
+          <path id="route" d="M40 300 C 120 120, 260 340, 360 190 S 560 60, 650 110"
+                fill="none" stroke="url(#routeGrad)" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 12" />
+          <g id="stopsLayer"></g>
+          <g id="shuttle">
+            <circle r="22" class="pulse" />
+            <circle r="11" class="dot" />
+            <text y="4" text-anchor="middle" class="bus-label">04</text>
+          </g>
+        </svg>
+
+        <div class="demo-bottom">
+          <div class="status">
+            <span class="status-dot" id="statusDot"></span>
+            <div>
+              <strong id="statusText">Shuttle #04 Moving</strong>
+              <small id="speedText">22 km/h</small>
+            </div>
+          </div>
+          <div class="eta">
+            <small>ETA</small>
+            <strong id="etaText">3 Minutes Away</strong>
+          </div>
+        </div>
+        <p class="next" id="nextText">Next: SJT Rotunda &middot; Academic Loop 1</p>
+      </div>
+
+      <ul class="callouts">
+        <li><strong>Live Motion State</strong>Shows whether the shuttle is MOVING (22 km/h) or STOPPED at a campus halt.</li>
+        <li><strong>Auto-Stop Snapping</strong>Instantly identifies the closest stop to your current location.</li>
+        <li><strong>Accurate Countdown</strong>Real-time ETA calculated dynamically so you arrive just in time.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section alt" id="how">
+    <h2>How V-Track Works</h2>
+    <p class="sub">Simple and reliable data flow from shuttle to student.</p>
+    <div class="steps">
+      <div class="step reveal"><span>1</span><h3>GPS in Shuttle</h3><p>A small GPS module or driver smartphone sends live coordinates and speed every 3 seconds.</p><em>Driver Node</em></div>
+      <div class="arrow">&#10140;</div>
+      <div class="step reveal"><span>2</span><h3>Cloud Server</h3><p>The server receives location data and maps the vehicle along its designated campus route.</p><em>Real-Time Sync</em></div>
+      <div class="arrow">&#10140;</div>
+      <div class="step reveal"><span>3</span><h3>ETA Engine</h3><p>Calculates distance to your nearest stop and checks moving vs. stopped status.</p><em>ETA Calculation</em></div>
+      <div class="arrow">&#10140;</div>
+      <div class="step reveal"><span>4</span><h3>Student App</h3><p>Shows the live shuttle on the campus map with an accurate arrival countdown.</p><em>Student Interface</em></div>
+    </div>
+    <p class="note center">Student flow: Open the app &#10140; View nearest stop &#10140; See shuttle 3 mins away &#10140; Walk out on time.</p>
+  </section>
+
+  <!-- STOPS & ROUTES -->
+  <section class="section" id="stops">
+    <h2>VIT Vellore Shuttle Stop Network</h2>
+    <p class="sub">High-traffic transit points and key campus shuttle loops.</p>
+
+    <div class="two-col">
+      <div>
+        <h3 class="col-title">Key Campus Shuttle Stops</h3>
+        <ul class="list">
+          <li><strong>Main Gate Terminal</strong><span>Katpadi Road / Main Security</span></li>
+          <li><strong>Technology Tower (TT) &amp; GDN</strong><span>Central Academic Core Hub</span></li>
+          <li><strong>Silver Jubilee Tower (SJT)</strong><span>CSE, SCOPE Labs &amp; Hexagon</span></li>
+          <li><strong>Men's Hostels (Blocks A to Q)</strong><span>North Residential Zone</span></li>
+          <li><strong>Ladies' Hostels (LH Blocks)</strong><span>South Residential Zone</span></li>
+          <li><strong>Foodys &amp; Gazebo</strong><span>Student Center &amp; Canteen</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="col-title">Major Shuttle Route Loops</h3>
+        <ul class="list routes">
+          <li><strong>Route 1: Academic Loop</strong><span>Main Gate &#10140; TT &#10140; SMV &#10140; SJT &#10140; Katpadi Gate</span><em>High frequency 8:00 AM - 6:00 PM</em></li>
+          <li><strong>Route 2: Men's Hostel Shuttle</strong><span>MH Blocks (A to Q) &#10140; Foodys &#10140; SJT &#10140; TT</span><em>Connects residential blocks with lecture halls</em></li>
+          <li><strong>Route 3: Ladies' Hostel Shuttle</strong><span>LH Blocks &#10140; SMV &#10140; TT &#10140; Main Gate</span><em>Direct transit between LH and academic blocks</em></li>
+          <li><strong>Route 4: Late Night Transit</strong><span>Full campus sweep connecting Library &amp; Hostels</span><em>Safe commute for night study and library users</em></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN -->
+  <section class="section alt" id="plan">
+    <h2>How We Are Going to Proceed</h2>
+    <p class="sub">Structured engineering timeline from research to live testing.</p>
+    <div class="timeline">
+      <div class="phase reveal"><small>Phase 1 &middot; Weeks 1-2</small><h3>Campus Survey &amp; Stop Mapping</h3><p>Walk campus routes and record precise GPS coordinates for all 18+ stops (SJT, TT, MH, LH) and road junctions.</p></div>
+      <div class="phase reveal"><small>Phase 2 &middot; Weeks 3-4</small><h3>Driver GPS Telemetry Setup</h3><p>Configure a lightweight driver beacon app streaming location and speed to the real-time database.</p></div>
+      <div class="phase reveal"><small>Phase 3 &middot; Weeks 5-6</small><h3>ETA &amp; Motion State Logic</h3><p>Implement geofencing around stops, ETA calculation algorithms and moving/stopped state detection.</p></div>
+      <div class="phase reveal"><small>Phase 4 &middot; Weeks 7-8</small><h3>Student App UI &amp; Campus Trial</h3><p>Build the student mobile interface, run a live test on 1 shuttle (MH-SJT loop) and collect feedback.</p></div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="section" id="outcomes">
+    <h2>Expected Outcomes &amp; Value for VIT Vellore</h2>
+    <p class="sub">Practical, measurable improvements to daily campus mobility.</p>
+    <div class="grid three">
+      <article class="card reveal"><h3 class="big">65% Less Wait Time</h3><p>Students only walk to stops when the shuttle is approaching, eliminating long idle waits in the sun.</p><span class="tag">Verified student need</span></article>
+      <article class="card reveal"><h3 class="big">Improved Punctuality</h3><p>Predictable transit lets students and faculty make tight 10-minute class transitions on time.</p><span class="tag">Verified student need</span></article>
+      <article class="card reveal"><h3 class="big">Zero Route Confusion</h3><p>Clear destination labels and upcoming stop lists ensure passengers board the correct vehicle.</p><span class="tag">Verified student need</span></article>
+    </div>
+    <p class="note center">V-Track is a realistic, low-cost solution to a daily transit problem at VIT Vellore. Next up: mapping campus stops and setting up the pilot tracking trial.</p>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section alt" id="team">
+    <h2>Project Team</h2>
+    <p class="sub">Vellore Institute of Technology, Vellore</p>
+    <div class="team">
+      <div class="member"><div class="avatar">SB</div><strong>Sumit Bisoyi</strong><span>26BIT0299</span></div>
+      <div class="member"><div class="avatar">AK</div><strong>Aryan Khan</strong><span>26BIT0255</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 V-Track &middot; VIT Vellore Campus Shuttle Tracking &middot; <a href="driver.html">Driver login</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

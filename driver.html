@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V-Track Driver</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body class="app">
+
+  <header class="appbar">
+    <a href="index.html" class="back" aria-label="Back to home">&larr;</a>
+    <strong class="brand">V<span>-Track</span> Driver</strong>
+    <span id="modeBadge" class="badge">Not sharing</span>
+  </header>
+
+  <main class="panel">
+    <h1>Share this shuttle's location</h1>
+    <p class="muted">Keep this page open and the screen on while driving. Students will see your shuttle live on the map.</p>
+
+    <div id="setup">
+      <label class="field"><span>Shuttle number</span>
+        <input id="busId" type="text" inputmode="text" maxlength="12" value="04" autocomplete="off" />
+      </label>
+      <label class="field"><span>Driver code</span>
+        <input id="code" type="password" autocomplete="off" placeholder="Ask your coordinator" />
+      </label>
+      <button id="start" class="btn-big">Start sharing</button>
+    </div>
+
+    <div id="live" hidden>
+      <div class="readout">
+        <div><small>Status</small><strong id="sendStatus">Waiting for GPS...</strong></div>
+        <div><small>Speed</small><strong id="speedOut">0 km/h</strong></div>
+        <div><small>GPS accuracy</small><strong id="accOut">-</strong></div>
+        <div><small>Last sent</small><strong id="lastOut">-</strong></div>
+      </div>
+      <button id="stop" class="btn-big danger">Stop sharing</button>
+    </div>
+
+    <p id="msg" class="msg" role="status"></p>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="config.js"></script>
+  <script src="shared.js"></script>
+  <script src="driver.js"></script>
+</body>
+</html>

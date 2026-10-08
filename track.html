@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>V-Track Live | VIT Vellore Shuttles</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body class="app">
+
+  <header class="appbar">
+    <a href="index.html" class="back" aria-label="Back to home">&larr;</a>
+    <strong class="brand">V<span>-Track</span> Live</strong>
+    <span id="modeBadge" class="badge">Connecting...</span>
+  </header>
+
+  <div id="map" aria-label="Live campus shuttle map"></div>
+
+  <section class="sheet">
+    <div class="sheet-top">
+      <div>
+        <small>Your stop</small>
+        <h2 id="stopName">Tap "Locate me"</h2>
+        <p id="stopDist" class="muted"></p>
+      </div>
+      <button id="locBtn" class="btn-small">&#128205; Locate me</button>
+    </div>
+
+    <label class="field">
+      <span>Choose a stop</span>
+      <select id="stopSelect"></select>
+    </label>
+
+    <div id="busList" class="bus-list"></div>
+    <p id="note" class="muted small"></p>
+  </section>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="config.js"></script>
+  <script src="shared.js"></script>
+  <script src="track.js"></script>
+</body>
+</html>
