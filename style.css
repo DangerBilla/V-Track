@@ -177,3 +177,22 @@ footer { text-align: center; padding: 30px; color: var(--muted); border-top: 1px
   .nav nav.open { display: flex; }
   .nav nav a { padding: 14px 6vw; border-top: 1px solid var(--border); }
 }
+
+/* ROLE CHOOSER */
+.gate { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px;
+  background: radial-gradient(800px 400px at 20% 0%, rgba(56,189,248,0.18), transparent 60%),
+              radial-gradient(700px 400px at 85% 10%, rgba(167,139,250,0.18), transparent 60%), var(--bg); }
+.gate[hidden] { display: none; }
+.gate-box { width: 100%; max-width: 640px; text-align: center; }
+.gate-box .logo { font-size: 1.8rem; margin-bottom: 18px; }
+.gate-box h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); }
+.gate-sub { color: var(--muted); margin: 8px 0 28px; }
+.gate-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.gate-card { display: flex; flex-direction: column; gap: 6px; align-items: center; padding: 28px 18px; background: var(--card);
+  border: 1px solid var(--border); border-radius: 20px; transition: transform 0.2s, border-color 0.2s; }
+.gate-card:hover, .gate-card:focus-visible { transform: translateY(-4px); border-color: var(--accent); outline: none; }
+.gate-card strong { font-size: 1.15rem; }
+.gate-card small { color: var(--muted); }
+.gate-ico { font-size: 2.4rem; }
+.gate-skip { margin-top: 26px; background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; font-size: 0.9rem; }
+@media (max-width: 560px) { .gate-choices { grid-template-columns: 1fr; } }

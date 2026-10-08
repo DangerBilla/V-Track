@@ -125,3 +125,20 @@ function frame(now) {
 }
 
 requestAnimationFrame(frame);
+
+// ---------- Role chooser (Student / Driver) ----------
+(function () {
+  const gate = document.getElementById("roleGate");
+  if (!gate) return;
+  const close = () => {
+    gate.hidden = true;
+    document.body.style.overflow = "";
+    try { sessionStorage.setItem("vtrack-gate", "1"); } catch (e) {}
+  };
+  let seen = false;
+  try { seen = sessionStorage.getItem("vtrack-gate") === "1"; } catch (e) {}
+  if (seen || location.hash) { gate.hidden = true; return; }
+  document.body.style.overflow = "hidden";
+  document.getElementById("gateSkip").addEventListener("click", close);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+})();

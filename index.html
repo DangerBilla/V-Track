@@ -9,6 +9,29 @@
 </head>
 <body>
 
+  <!-- ROLE CHOOSER (shown when the site opens) -->
+  <div class="gate" id="roleGate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+    <div class="gate-box">
+      <div class="logo">V<span>-Track</span></div>
+      <h2 id="gateTitle">Who is using V-Track?</h2>
+      <p class="gate-sub">Live shuttle tracking for VIT Vellore.</p>
+      <div class="gate-choices">
+        <a class="gate-card" href="track.html">
+          <span class="gate-ico">&#127891;</span>
+          <strong>I'm a Student</strong>
+          <small>See live shuttles and arrival times</small>
+        </a>
+        <a class="gate-card" href="driver.html">
+          <span class="gate-ico">&#128652;</span>
+          <strong>I'm a Driver</strong>
+          <small>Log in and share your shuttle's location</small>
+        </a>
+      </div>
+      <button type="button" class="gate-skip" id="gateSkip">Just look around the project</button>
+    </div>
+  </div>
+
+
   <!-- NAV -->
   <header class="nav">
     <a href="#top" class="logo">V<span>-Track</span></a>

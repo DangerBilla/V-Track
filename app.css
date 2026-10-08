@@ -76,3 +76,19 @@ select, input[type="text"], input[type="password"] {
 .msg.bad { color: var(--bad); }
 .msg.good { color: var(--good); }
 [hidden] { display: none !important; }
+
+/* ---- Added: multi-route support ---- */
+.bus-pin { background: var(--c, var(--accent)); }
+.bus-pin:not(.stopped):not(.offline) { box-shadow: 0 0 0 6px color-mix(in srgb, var(--c, #38bdf8) 30%, transparent); }
+.chips { display: flex; gap: 8px; overflow-x: auto; padding: 8px 12px; background: var(--bg); border-bottom: 1px solid var(--border); scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.rchip { flex: 0 0 auto; display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--muted); font-size: 0.8rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.rchip i { width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--accent)); }
+.rchip:not([style]) i { display: none; }
+.rchip.active { color: var(--text); border-color: var(--c, var(--accent)); background: #0d1530; }
+.rtag { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 0.7rem; font-weight: 600; color: #07101f; background: var(--c, var(--accent)); vertical-align: middle; }
+.bus-eta.dim { font-size: 0.75rem; font-weight: 600; color: var(--muted); }
+
+/* ---- Added: driver login ---- */
+.btn-big.ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); font-weight: 600; }
+.panel form { display: block; }

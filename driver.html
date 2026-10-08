@@ -11,27 +11,47 @@
   <header class="appbar">
     <a href="index.html" class="back" aria-label="Back to home">&larr;</a>
     <strong class="brand">V<span>-Track</span> Driver</strong>
-    <span id="modeBadge" class="badge">Not sharing</span>
+    <span id="modeBadge" class="badge">Signed out</span>
   </header>
 
   <main class="panel">
-    <h1>Share this shuttle's location</h1>
-    <p class="muted">Keep this page open and the screen on while driving. Students will see your shuttle live on the map.</p>
 
-    <div id="setup">
-      <label class="field"><span>Shuttle number</span>
-        <input id="busId" type="text" inputmode="text" maxlength="12" value="04" autocomplete="off" />
+    <!-- 1. LOGIN -->
+    <form id="loginView">
+      <h1>Driver login</h1>
+      <p class="muted">Sign in with the username and password your coordinator gave you.</p>
+      <label class="field"><span>Username</span>
+        <input id="user" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" />
       </label>
-      <label class="field"><span>Driver code</span>
-        <input id="code" type="password" autocomplete="off" placeholder="Ask your coordinator" />
+      <label class="field"><span>Password</span>
+        <input id="pass" type="password" autocomplete="current-password" />
+      </label>
+      <button id="login" type="submit" class="btn-big">Sign in</button>
+      <p id="demoNote" class="msg" hidden>Demo mode: Firebase isn't connected, so use a demo login from config.js. The shuttle is simulated and shows on the student page in this same browser.</p>
+    </form>
+
+    <!-- 2. CHOOSE SHUTTLE + ROUTE -->
+    <div id="setupView" hidden>
+      <h1>Hi, <span id="who"></span></h1>
+      <p class="muted">Choose the shuttle you are driving and its route, then start sharing. Students will see it live. Don't use the phone while driving.</p>
+      <label class="field"><span>Shuttle number plate</span>
+        <select id="busId"></select>
+      </label>
+      <label class="field"><span>Route you are driving</span>
+        <select id="routeId"></select>
       </label>
       <button id="start" class="btn-big">Start sharing</button>
+      <button id="signOut" type="button" class="btn-big ghost">Sign out</button>
     </div>
 
-    <div id="live" hidden>
+    <!-- 3. LIVE -->
+    <div id="liveView" hidden>
+      <h1 id="liveTitle">Sharing</h1>
       <div class="readout">
         <div><small>Status</small><strong id="sendStatus">Waiting for GPS...</strong></div>
         <div><small>Speed</small><strong id="speedOut">0 km/h</strong></div>
+        <div><small>Direction</small><strong id="dirOut">Detecting...</strong></div>
+        <div><small>Route</small><strong id="routeOut">-</strong></div>
         <div><small>GPS accuracy</small><strong id="accOut">-</strong></div>
         <div><small>Last sent</small><strong id="lastOut">-</strong></div>
       </div>
@@ -42,6 +62,7 @@
   </main>
 
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
   <script src="config.js"></script>
   <script src="shared.js"></script>
